@@ -61,6 +61,7 @@ if torch.cuda.is_available():
 criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 num_epochs=2
+print("Training Started...")
 # Training loop
 for epoch in range(num_epochs):
     train_loss = 0.0
