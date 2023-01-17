@@ -9,6 +9,7 @@ Original file is located at
 
 import torch
 import torch.nn as nn
+from sklearn.cluster import KMeans
 
 class AutoEncoder(nn.Module):
     def __init__(self):
