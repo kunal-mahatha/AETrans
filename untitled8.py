@@ -97,9 +97,10 @@ with torch.no_grad():
         features.append(model.conv3(model.conv2(model.conv1(data))).cpu())
 
 # Flatten the features
+features = torch.cat(features, dim=0)
 features = torch.squeeze(features)
 
-'''features = torch.cat(features, dim=0)
+'''
 features = features.view(features.size(0), -1)'''
 
 
