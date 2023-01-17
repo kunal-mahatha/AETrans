@@ -99,6 +99,7 @@ with torch.no_grad():
 # Flatten the features
 features = torch.cat(features, dim=0)
 features = torch.squeeze(features)
+features = features.view(-1, 1)
 
 '''
 features = features.view(features.size(0), -1)'''
