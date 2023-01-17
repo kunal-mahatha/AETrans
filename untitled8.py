@@ -98,12 +98,12 @@ with torch.no_grad():
 # Flatten the features
 features = torch.cat(features, dim=0)
 
-# Perform k-means clustering
-kmeans = torch.cluster.KMeans(num_clusters=10)
-cluster_indices = kmeans(features)
+
+kmeans = KMeans(n_clusters=10)
+cluster_indices = kmeans.fit_predict(features.numpy())
 
 # Extract the cluster centers
-codebook = kmeans.cluster_centers
+codebook = kmeans.cluster_centers_
 
 # Extract the labels
 labels = [cifar10_train.classes[i] for i in cluster_indices]
