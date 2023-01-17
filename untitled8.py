@@ -98,6 +98,7 @@ with torch.no_grad():
 
 # Flatten the features
 features = torch.cat(features, dim=0)
+features = features.view(features.size(0), -1)
 
 
 kmeans = KMeans(n_clusters=10)
