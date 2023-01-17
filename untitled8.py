@@ -10,6 +10,8 @@ Original file is located at
 import torch
 import torch.nn as nn
 from sklearn.cluster import KMeans
+from torch.utils.data import Subset
+
 
 class AutoEncoder(nn.Module):
     def __init__(self):
@@ -49,9 +51,15 @@ transform = transforms.Compose([
 cifar10_train = datasets.CIFAR10(root='path/to/data', train=True, download=True, transform=transform)
 cifar10_test = datasets.CIFAR10(root='path/to/data', train=False, download=True, transform=transform)
 
+# Define the indices of the images to use
+indices = list(range(600))
+# Create the subset of the dataset
+subset_train = Subset(cifar10_train, indices)
+subset_test = Subset(cifar10_test, indices)
+
 # Create the DataLoader
-train_loader = torch.utils.data.DataLoader(cifar10_train, batch_size=64, shuffle=True)
-test_loader = torch.utils.data.DataLoader(cifar10_test, batch_size=64, shuffle=True)
+train_loader = torch.utils.data.DataLoader(subset_train, batch_size=64, shuffle=True)
+test_loader = torch.utils.data.DataLoader(subset_test, batch_size=64, shuffle=True)
 
 # Initialize the model and move it to the GPU
 model = AutoEncoder()
