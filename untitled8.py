@@ -113,7 +113,7 @@ features = features.view(-1, 1)
 features = features.view(features.size(0), -1)'''
 
 
-kmeans = KMeans(n_clusters=10)
+kmeans = KMeans(n_clusters=10, n_init=1)
 cluster_indices = kmeans.fit_predict(features.numpy())
 
 # Extract the cluster centers
