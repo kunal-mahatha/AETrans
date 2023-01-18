@@ -212,11 +212,15 @@ criterion = nn.CrossEntropyLoss()
 print("Training Transformer...")
 # Training loop
 num_epochs = 5
+
+# Define the train_loader
+train_loader = torch.utils.data.DataLoader(codebook_data, labels, batch_size=batch_size, shuffle=True)
+
 # Training loop
 for epoch in range(num_epochs):
     train_loss = 0.0
     train_acc = 0.0
-    for data, label in zip(codebook_data, labels):
+    for data, label in train_loader:
         # Move the data and label to the GPU
         if torch.cuda.is_available():
             data = data.cuda()
