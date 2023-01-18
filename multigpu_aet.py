@@ -209,6 +209,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 # Define the criterion
 criterion = nn.CrossEntropyLoss()
 
+print("Training Transformer...")
 # Training loop
 num_epochs = 5
 # Training loop
