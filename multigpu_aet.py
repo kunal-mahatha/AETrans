@@ -212,7 +212,7 @@ criterion = nn.CrossEntropyLoss()
 print("Training Transformer...")
 # Training loop
 num_epochs = 5
-
+batch_size=64
 # Define the train_loader
 train_loader = torch.utils.data.DataLoader(codebook_data, labels, batch_size=batch_size, shuffle=True)
 

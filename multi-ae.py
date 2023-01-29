@@ -51,7 +51,7 @@ cifar10_train = datasets.CIFAR10(root='path/to/data', train=True, download=True,
 cifar10_test = datasets.CIFAR10(root='path/to/data', train=False, download=True, transform=transform)
 
 # Define the indices of the images to use
-indices = list(range(600))
+indices = list(range(50000))
 # Create the subset of the dataset
 subset_train = Subset(cifar10_train, indices)
 subset_test = Subset(cifar10_test, indices)
@@ -73,7 +73,7 @@ if torch.cuda.is_available():
 # Define the criterion and optimizer
 criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-num_epochs=2
+num_epochs=200
 print("Training Started...")
 # Training loop
 for epoch in range(num_epochs):
